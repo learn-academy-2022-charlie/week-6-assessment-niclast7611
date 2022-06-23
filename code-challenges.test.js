@@ -13,17 +13,17 @@
 // --------------------1) Create a function that takes in an array of objects and returns an array with a sentence about each person with their name capitalized.
 
 // a) Create a test with an expect statement using the variable provided.
-describe('peopleInfo', () => {
-  it('returns an array with a sentence about each person with their name capitalized.', () => {
-    const people = [
-      { name: "ford prefect", occupation: "a hitchhiker" },
-      { name: "zaphod beeblebrox", occupation: "president of the galaxy" },
-      { name: "arthur dent", occupation: "a radio employee" }
-    ]
-    // Expected output: ["Ford Prefect is a hitchhiker.", "Zaphod Beeblebrox is president of the galaxy.", "Arthur Dent is a radio employee."]
-    expect((peopleInfo(people)).toEqual(["Ford Prefect is a hitchhiker.", "Zaphod Beeblebrox is president of the galaxy.", "Arthur Dent is a radio employee."]))
-  })
-})
+// describe('peopleInfo', () => {
+//   it('returns an array with a sentence about each person with their name capitalized.', () => {
+//     const people = [
+//       { name: "ford prefect", occupation: "a hitchhiker" },
+//       { name: "zaphod beeblebrox", occupation: "president of the galaxy" },
+//       { name: "arthur dent", occupation: "a radio employee" }
+//     ]
+//     // Expected output: ["Ford Prefect is a hitchhiker.", "Zaphod Beeblebrox is president of the galaxy.", "Arthur Dent is a radio employee."]
+//     expect(peopleInfo(people)).toEqual(["Ford Prefect is a hitchhiker.", "Zaphod Beeblebrox is president of the galaxy.", "Arthur Dent is a radio employee."])
+//   })
+// })
 
 // I GOT RED
 // FAIL  ./code-challenges.test.js
@@ -104,8 +104,8 @@ describe('remainders', () => {
     // Expected output: [ 2, 0, -1, 0 ]
     const hodgepodge2 = [5, "Hola", 43, -34, "greetings", true]
     // Expected output: [ 2, 1, -1 ]
-    expect((remainders(hodgepodge1)).toEqual( [ 2, 0, -1, 0 ]))
-    expect((remainders(hodgepodge2)).toEqual([ 2, 1, -1 ]))
+    expect(remainders(hodgepodge1)).toEqual([ 2, 0, -1, 0 ])
+    expect(remainders(hodgepodge2)).toEqual([ 2, 1, -1 ])
   })
 })
 
@@ -128,25 +128,71 @@ describe('remainders', () => {
 //I will divide each index by 3 with the modulo and return the remainder
 
 const remainders = (arr) => {
-//  let emptyArr = []
-  return arr.filter((value) => {
-    return Number.isInteger(value)
-    .forEach(value => {
-        let sum = value % 3
-        return sum
-    });
-  })
+ let emptyArr = []
+  for(let i=0; i<arr.length; i++){
+    if(Number.isInteger(arr[i])){
+     emptyArr.push(arr[i] % 3)
+    }
+  }
+return emptyArr
 }
+// REFACTOR
+// Instead of looping over the empty array and finding the remainders that way I pushed the integers modulo three into the empty array
+  //So basically I just pushed the remainder into the array
 
+
+// I GOT GREEN
+// PASS  ./code-challenges.test.js
+// remainders
+//   ✓ returns an array of only the REMAINDERS of the numbers when divided by 3. (2 ms)
 
 // --------------------3) Create a function that takes in an array of numbers and returns the sum of all the numbers cubed.
 
 // a) Create a test with an expect statement using the variables provided.
 
-const cubeAndSum1 = [2, 3, 4]
-// Expected output: 99
-const cubeAndSum2 = [0, 5, 10]
-// Expected output: 1125
+describe('cubeSum', () => {
+  it('returns the sum of all the numbers cubed.', () => {
+    const cubeAndSum1 = [2, 3, 4]
+    // Expected output: 99
+    const cubeAndSum2 = [0, 5, 10]
+    // Expected output: 1125
+    expect(cubeSum(cubeAndSum1)).toEqual(99)
+    expect(cubeSum(cubeAndSum2)).toEqual(1125)
+  })
+})
 
+// I GOT RED
+// FAIL  ./code-challenges.test.js
+// cubeSum
+//   ✕ returns the sum of all the numbers cubed.
+
+// ● cubeSum › returns the sum of all the numbers cubed.
+
+//   ReferenceError: cubeSum is not defined
 
 // b) Create the function that makes the test pass.
+
+//Psuedo Code 
+// I need to create a function called cubeSum that takes in an array of numbers
+// I need to create a new array to put the cubed numbers in 
+// I need to loop over the array and cube each index
+// After that I will try to use a method called .reduce() to sum the whole thing 
+// Return that sum
+
+const cubeSum = (nums) => {
+  let cubedArr = []
+  for(let i=0; i<nums.length; i++){
+    cubedArr.push(nums[i] ** 3)
+  }
+  let sumArr = cubedArr.reduce((previousValue, currentValue) => previousValue + currentValue,
+  0)
+  return sumArr
+}
+
+// I GOT GREEN 
+// PASS  ./code-challenges.test.js
+// cubeSum
+//   ✓ returns the sum of all the numbers cubed. (1 ms)
+
+//Refactor 
+//I tried the reduce method and it worked its pretty straight forward to use 
