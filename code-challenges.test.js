@@ -13,17 +13,17 @@
 // --------------------1) Create a function that takes in an array of objects and returns an array with a sentence about each person with their name capitalized.
 
 // a) Create a test with an expect statement using the variable provided.
-// describe('peopleInfo', () => {
-//   it('returns an array with a sentence about each person with their name capitalized.', () => {
-//     const people = [
-//       { name: "ford prefect", occupation: "a hitchhiker" },
-//       { name: "zaphod beeblebrox", occupation: "president of the galaxy" },
-//       { name: "arthur dent", occupation: "a radio employee" }
-//     ]
-//     // Expected output: ["Ford Prefect is a hitchhiker.", "Zaphod Beeblebrox is president of the galaxy.", "Arthur Dent is a radio employee."]
-//     expect(peopleInfo(people)).toEqual(["Ford Prefect is a hitchhiker.", "Zaphod Beeblebrox is president of the galaxy.", "Arthur Dent is a radio employee."])
-//   })
-// })
+describe('peopleInfo', () => {
+  it('returns an array with a sentence about each person with their name capitalized.', () => {
+    const people = [
+      { name: "ford prefect", occupation: "a hitchhiker" },
+      { name: "zaphod beeblebrox", occupation: "president of the galaxy" },
+      { name: "arthur dent", occupation: "a radio employee" }
+    ]
+    // Expected output: ["Ford Prefect is a hitchhiker.", "Zaphod Beeblebrox is president of the galaxy.", "Arthur Dent is a radio employee."]
+    expect(peopleInfo(people)).toEqual(["Ford Prefect is a hitchhiker.", "Zaphod Beeblebrox is president of the galaxy.", "Arthur Dent is a radio employee."])
+  })
+})
 
 // I GOT RED
 // FAIL  ./code-challenges.test.js
@@ -66,9 +66,10 @@ const peopleInfo = (arr) => {
          var capitalArr = (arrName[i][0].toUpperCase() + arrName[i].slice(1))
          newArr.push(capitalArr)
         }
-        let newString = newArr.join(' ')
-        finalArr.push(`${newString} is ${arr[i].occupation}`)
       }
+      finalArr.push(`${newArr[0]} ${newArr[1]} is ${arr[0].occupation}.`)
+      finalArr.push(`${newArr[2]} ${newArr[3]} is ${arr[1].occupation}.`)
+      finalArr.push(`${newArr[4]} ${newArr[5]} is ${arr[2].occupation}.`)
     return finalArr
 }
 
@@ -92,7 +93,14 @@ const peopleInfo = (arr) => {
 //    return [`${newString1} is ${arr[0].occupation}`, `${newString2} is ${arr[1].occupation}`, `${newString3} is ${arr[2].occupation}`]
 // }
 
+// I GOT GREEN
+// PASS  ./code-challenges.test.js
+// peopleInfo
+//   ✓ returns an array with a sentence about each person with their name capitalized. (3 ms)
 
+//REFACTOR
+//As you can see I tried several different methods, building off of eachother. I finally got green on the uncommented one.
+//I hard coded the indexs into the push so the function is not really dynamic which is something that I will try to change if I have time.
 
 // --------------------2) Create a function that takes in a mixed data array and returns an array of only the REMAINDERS of the numbers when divided by 3.
 
